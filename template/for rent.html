@@ -1,0 +1,580 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Broker Management System</title>
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+    <!-- Favicons -->
+  <link href="{% static 'img/favicon.png' %}" rel="icon">
+  <link href="{% static 'img/apple-touch-icon.png' %}" rel="apple-touch-icon">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" rel="stylesheet">
+
+  <!-- Bootstrap CSS File -->
+  <link href="{% static 'lib/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+
+  <!-- Libraries CSS Files -->
+  <link href="{% static 'lib/font-awesome/css/font-awesome.min.css' %}" rel="stylesheet">
+  <link href="{% static 'lib/animate/animate.min.css' %}" rel="stylesheet">
+  <link href="{% static 'lib/ionicons/css/ionicons.min.css' %}" rel="stylesheet">
+  <link href="{% static 'lib/owlcarousel/assets/owl.carousel.min.css' %}" rel="stylesheet">
+
+  <!-- Main Stylesheet File -->
+  <link href="{% static 'css/style2.css' %}" rel="stylesheet">
+
+
+</head>
+<style>
+    .register{
+    //background: -webkit-linear-gradient(left, #3931af, #00c6ff);
+    background:#2eca6a;
+    margin-top: 10%;
+    padding: 3%;
+}
+.register-left{
+    text-align: center;
+    color: #fff;
+    margin-top: 4%;
+}
+.register-left input{
+    border: none;
+    border-radius: 1.5rem;
+    padding: 2%;
+    width: 60%;
+    background: #f8f9fa;
+    font-weight: bold;
+    color: #383d41;
+    margin-top: 30%;
+    margin-bottom: 3%;
+    cursor: pointer;
+}
+.register-right{
+    //background: #f8f9fa;
+    background:white;
+    //border-top-left-radius: 10% 50%;
+    //border-bottom-left-radius: 10% 50%;
+}
+.register-left img{
+    margin-top: 15%;
+    margin-bottom: 5%;
+    width: 25%;
+    -webkit-animation: mover 2s infinite  alternate;
+    animation: mover 1s infinite  alternate;
+}
+@-webkit-keyframes mover {
+    0% { transform: translateY(0); }
+    100% { transform: translateY(-20px); }
+}
+@keyframes mover {
+    0% { transform: translateY(0); }
+    100% { transform: translateY(-20px); }
+}
+.register-left p{
+    font-weight: lighter;
+    padding: 12%;
+    margin-top: -9%;
+}
+.register .register-form{
+    padding: 10%;
+    margin-top: 10%;
+}
+.btnRegister{
+    float: right;
+    margin-top: 10%;
+    border: none;
+    border-radius: 1.5rem;
+    padding: 2%;
+    background: #2eca6a;
+    color: #fff;
+    font-weight: 600;
+    width: 50%;
+    cursor: pointer;
+}
+.register .nav-tabs{
+    margin-top: 3%;
+    border: none;
+    background: #0062cc;
+    border-radius: 1.5rem;
+    width: 28%;
+    float: right;
+}
+.register .nav-tabs .nav-link{
+    padding: 2%;
+    height: 34px;
+    font-weight: 600;
+    color: #fff;
+    border-top-right-radius: 1.5rem;
+    border-bottom-right-radius: 1.5rem;
+}
+.register .nav-tabs .nav-link:hover{
+    border: none;
+}
+.register .nav-tabs .nav-link.active{
+    width: 100px;
+    color: #0062cc;
+    border: 2px solid #0062cc;
+    border-top-left-radius: 1.5rem;
+    border-bottom-left-radius: 1.5rem;
+}
+.register-heading{
+    text-align: center;
+    margin-top: 8%;
+    margin-bottom: -15%;
+    color: #495057;
+}
+
+
+.fileUpload {
+	position: relative;
+	overflow: hidden;
+	//margin: 10px;
+	background-color: #BDBDBD;
+	text-align: center;
+    font-size:13px;
+    height:40px;
+	border: 1px solid silver;
+    border-radius: 0.5rem;
+    padding: 2%;
+    width: 100%;
+    background: white;
+    color: #383d41;
+    cursor: pointer;
+    float:left:
+}
+.fileUpload input.upload {
+	position: absolute;
+	top: 0;
+	right: 0;
+	margin: 0;
+	padding: 0;
+	cursor: pointer;
+	opacity: 0;
+	filter: alpha(opacity=0);
+	//height: 100%;
+	text-align: center;
+}
+.custom-span{
+  font-family: Arial;
+  font-size: 12px;
+  color: #FE57A1}
+#uploadFile
+{
+  border: none;
+  //margin-left: 10px;
+  width: 300px;
+ }
+.custom-para,#fileButton
+{
+  font-size: 15px;
+  border: none;
+    border-radius: 0.5rem;
+    padding: 0%;
+    width: 30%;
+    background: white;
+    color: gray;
+    cursor: pointer;
+  }
+  #imgupload{
+    margin-top:-35px;
+    float:right;
+    border: none;
+    border-radius: 1.5rem;
+    padding: 2%;
+    background: #2eca6a;
+    color: #fff;
+    font-weight: 600;
+    cursor: pointer;
+    font-size:12px;
+    padding-left:15px;
+    padding-right:15px;
+  }
+  #uploader{
+    width:100%;
+    height:6px;
+    border-radius: 10px;
+    position:relative;
+    top:-5px;
+  }
+  progress[value]::-webkit-progress-bar {
+     background-color: silver;
+  }
+  progress[value]::-webkit-progress-value {
+     background-color: #2eca6a;
+  }
+</style>
+<body>
+<!--/ Nav Star /-->
+  <nav class="navbar navbar-default navbar-trans navbar-expand-lg fixed-top">
+    <div class="container">
+      <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarDefault"
+        aria-controls="navbarDefault" aria-expanded="false" aria-label="Toggle navigation">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+      <a class="navbar-brand text-brand" href="">Estate<span class="color-b">Agency</span></a>
+      <button type="button" class="btn btn-link nav-search navbar-toggle-box-collapse d-md-none" data-toggle="collapse"
+        data-target="#navbarTogglerDemo01" aria-expanded="false">
+        <span class="fa fa-search" aria-hidden="true"></span>
+      </button>
+      <div class="navbar-collapse collapse justify-content-center" id="navbarDefault">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link" href="index">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="about">About</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="index" id="navbarDropdown" role="button" data-toggle="dropdown"
+              aria-haspopup="true" aria-expanded="false">
+              Buy-Rent Property
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item" href="buy">Buy</a>
+              <a class="dropdown-item" href="rent">Rent</a>
+            </div>
+          </li>
+          <li class="nav-item dropdown active">
+            <a class="nav-link dropdown-toggle" href="index" id="navbarDropdown" role="button" data-toggle="dropdown"
+              aria-haspopup="true" aria-expanded="false">
+              Sell-Rent Property
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item" href="forsell">Sell</a>
+              <a class="dropdown-item" href="forrent">Rent</a>
+            </div>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="contact">Contact</a>
+          </li>
+          {% if user %}
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="index" id="navbarDropdown" role="button" data-toggle="dropdown"
+              aria-haspopup="true" aria-expanded="false">
+              My Account
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="profile">Profile</a>
+                <a class="dropdown-item" href="property">Property</a>
+                <a class="dropdown-item" href="logout">Logout</a>
+              </div>
+            </li>
+          {% else %}
+            <li class="nav-item">
+              <a class="nav-link" href="registration">LogIn</a>
+            </li>
+          {% endif %}
+        </ul>
+      </div>
+
+    </div>
+  </nav>
+  <!--/ Nav End /-->
+
+
+
+<!------ Include the above in your HEAD tag ---------->
+<form action="forrentdata" method="post">
+    {% csrf_token %}
+<div class="container register">
+                <div class="row">
+
+                    <div class="col-md-12 register-right">
+
+                        <div class="tab-content" id="myTabContent">
+                            <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                                <h3 class="register-heading">Rent Your Property</h3>
+                                <div class="row register-form">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                          <select class="form-control" required name="land">
+                                            <option disabled selected hidden value="">Land Type</option>
+                                            <option value="Plot">Plot</option>
+                                            <option value="Built">Built</option>
+                                            <option value="Semi Built">Semi Built</option>
+                                          </select>
+                                        </div>
+
+                                        <div class="form-group">
+                                          <select class="form-control" required name="building">
+                                            <option disabled selected hidden value="">Building Type</option>
+                                            <option value="Flats">Flats</option>
+                                            <option value="Bunglow">Bunglow</option>
+                                          </select>
+                                        </div>
+
+                                        <div class="form-group">
+                                          <select class="form-control" required name="area">
+                                            <option disabled selected hidden value="">Area Type</option>
+                                            <option value="Residental">Residental</option>
+                                            <option value="Commercial">Commercial</option>
+                                            <option value="Industrial">Industrial</option>
+                                          </select>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <input type="text" class="form-control" placeholder="Enter Area (Sq.Ft)" value="" name="areasq" required/>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <input type="text" class="form-control" placeholder="Enter Location" value="" name="location" required/>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <input type="text" class="form-control" placeholder="Enter Upper Price" value="" name="upper" required/>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <input type="text" class="form-control" placeholder="Enter Lower Price" value="" name="lower" required/>
+                                        </div>
+
+
+                                    </div>
+                                        <div class="col-md-6">
+                                        <div class="form-group">
+                                            <input type="text" class="form-control" placeholder="Enter Renter's Name" value="" name="sellername" required/>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <input type="text" class="form-control" placeholder="Enter Renter's Address" value="" name="selleraddress" required/>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <input type="text" class="form-control" placeholder="Enter Contact No." value="" name="sellercontact" required/>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <div class="fileUpload">
+                                              <p class="custom-para" id="filename">Select Image</p>
+                                              <input id="uploadBtn" type="file" class="upload" />
+
+                                            </div>
+                                            <progress id="uploader" value="0" max="100">0%</progress>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <textarea placeholder="Any comments or suggestions?" class="form-control" name="comment"></textarea>
+                                        </div>
+                                        <input type="submit" class="btnRegister"  value="Submit"/>
+                                    </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+  <input type="hidden" id="imgurl" name="imgurl">
+</form>
+
+  <!--/ footer Star /-->
+  <section class="section-footer">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-12 col-md-4">
+          <div class="widget-a">
+            <div class="w-header-a">
+              <h3 class="w-title-a text-brand">EstateAgency</h3>
+            </div>
+            <div class="w-body-a">
+              <p class="w-text-a color-text-a">
+                EstateAgency is here to make your journey to a new home, simple and memorable. So we decided to bring you a platform which allows you to browse through millions of property listings across 900+ cities in India.
+              </p>
+            </div>
+            <div class="w-footer-a">
+              <ul class="list-unstyled">
+                <li class="color-a">
+                  <span class="color-text-a">Email .</span> EstateAgency@gmail.com</li>
+                <li class="color-a">
+                  <span class="color-text-a">Phone .</span> +91 9090909090</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-12 col-md-4 section-md-t3">
+          <div class="widget-a">
+            <div class="w-header-a">
+              <h3 class="w-title-a text-brand">Quick Menu</h3>
+            </div>
+            <div class="w-body-a">
+              <div class="w-body-a">
+                <ul class="list-unstyled">
+                  <li class="item-list-a">
+                    <a href="index">Home</a>
+                  </li>
+                  <li class="item-list-a">
+                    <a href="about">About</a>
+                  </li>
+
+                  <li class="item-list-a">
+                    <a href="contact">Contact</a>
+                  </li>
+
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-12 col-md-4 section-md-t3">
+          <div class="widget-a">
+            <div class="w-header-a">
+              <h3 class="w-title-a text-brand">International sites</h3>
+            </div>
+            <div class="w-body-a">
+              <ul class="list-unstyled">
+                <li class="item-list-a">
+                  <i class="fa fa-angle-right"></i>Venezuela
+                </li>
+                <li class="item-list-a">
+                  <i class="fa fa-angle-right"></i>China
+                </li>
+                <li class="item-list-a">
+                  <i class="fa fa-angle-right"></i> Hong Kong
+                </li>
+                <li class="item-list-a">
+                  <i class="fa fa-angle-right"></i>Argentina
+                </li>
+                <li class="item-list-a">
+                  <i class="fa fa-angle-right"></i> Singapore
+                </li>
+                <li class="item-list-a">
+                  <i class="fa fa-angle-right"></i> Philippines
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <footer>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+
+          <div class="socials-a">
+            <ul class="list-inline">
+              <li class="list-inline-item">
+                <a href="">
+                  <i class="fa fa-facebook" aria-hidden="true"></i>
+                </a>
+              </li>
+              <li class="list-inline-item">
+                <a href="">
+                  <i class="fa fa-twitter" aria-hidden="true"></i>
+                </a>
+              </li>
+              <li class="list-inline-item">
+                <a href="">
+                  <i class="fa fa-instagram" aria-hidden="true"></i>
+                </a>
+              </li>
+              <li class="list-inline-item">
+                <a href="">
+                  <i class="fa fa-pinterest-p" aria-hidden="true"></i>
+                </a>
+              </li>
+              <li class="list-inline-item">
+                <a href="">
+                  <i class="fa fa-dribbble" aria-hidden="true"></i>
+                </a>
+              </li>
+            </ul>
+          </div>
+          <div class="copyright-footer">
+            <p class="copyright color-text-a">
+              &copy; Copyright
+              <span class="color-a">EstateAgency</span> All Rights Reserved.
+            </p>
+          </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+  <!--/ Footer End /-->
+
+
+  <a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
+<!--  <div id="preloader"></div>-->
+
+  <!-- JavaScript Libraries -->
+  <script src="{% static 'lib/jquery/jquery.min.js' %}"></script>
+  <script src="{% static 'lib/jquery/jquery-migrate.min.js' %}"></script>
+  <script src="{% static 'lib/popper/popper.min.js' %}"></script>
+  <script src="{% static 'lib/bootstrap/js/bootstrap.min.js' %}"></script>
+  <script src="{% static 'lib/easing/easing.min.js' %}"></script>
+  <script src="{% static 'lib/owlcarousel/owl.carousel.min.js' %}"></script>
+  <script src="{% static 'lib/scrollreveal/scrollreveal.min.js' %}"></script>
+  <!-- Contact Form JavaScript File -->
+  <script src="{% static 'contactform/contactform.js' %}"></script>
+
+  <!-- Template Main Javascript File -->
+  <script src="{% static 'js/main2.js' %}"></script>
+
+    <script type="text/javascript">
+    document.getElementById("uploadBtn").onchange = function () {
+    document.getElementById("filename").innerHTML = this.value;
+    };
+    </script>
+
+    <script src="https://www.gstatic.com/firebasejs/8.2.9/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.2.9/firebase-storage.js"></script>
+
+
+
+<script>
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyC2yNHim8NuOyJrTKxW_zaCML9CO55uYS4",
+    authDomain: "brokersystem-f45eb.firebaseapp.com",
+    databaseURL: "https://brokersystem-f45eb-default-rtdb.firebaseio.com",
+    storageBucket: "brokersystem-f45eb.appspot.com",
+    messagingSenderId: "956492884368",
+  };
+  firebase.initializeApp(config);
+  //-------------------------------------
+
+  var uploader = document.getElementById('uploader');
+  var fileButton =         document.getElementById('uploadBtn');
+  fileButton.addEventListener('change', function(e){
+  var file = e.target.files[0];
+  var storageRef = firebase.storage().ref('rent/'+file.name);
+  var task = storageRef.put(file);
+  task.on('state_changed', function progress(snapshot) {
+    var percentage = ((snapshot.bytesTransferred/snapshot.totalBytes)*100)-75;
+    uploader.value = percentage;
+
+  }, function error(err) {
+
+
+  },function complete() {
+    task.snapshot.ref.getDownloadURL().then((downloadURL)=>{
+    console.log('File available at',downloadURL);
+    var a = document.getElementById("imgurl");
+    a.value = downloadURL;
+    uploader.value = 100;
+    });
+
+  });
+});
+
+
+</script>
+
+{% if data %}
+    <script>
+        alert("Data Submitted Successfully");
+    </script>
+    {% endif %}
+
+
+</body>
+</html>
