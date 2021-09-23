@@ -2,13 +2,14 @@
 - Agents can add thier properties.
 - Admin can view the report of all the properties and users.
 <br>
-<b>Dependency Used:</b>
+<b>Dependency Used:</b><br>
+
 - django : for web application
 - pyrebase : for accessing firebase database
 <br>
 <b>Database Used:</b>
 - Firebase
-<br>
+<br><br>
 <b>Screen 1:</b><br>
 <img src="Output3.JPG"/>
 
